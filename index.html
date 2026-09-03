@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia Digital Seguro - Acessibilidade para Seniores</title>
+    <!-- Ligação para o ficheiro CSS externo -->
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body id="corpo-aplicativo" class="fonte-normal">
+
+    <!-- BARRA DE ACESSIBILIDADE FIXA NO TOPO -->
+    <div class="barra-acessibilidade">
+        <div class="recipiente">
+            <div style="display: flex; align-items: center; gap: 8px;">
+                <span style="font-size: 24px;">♿</span>
+                <span class="fonte-negrito">ACESSIBILIDADE:</span>
+            </div>
+            
+            <div class="grupo-botoes-acessibilidade">
+                <div style="display: flex; align-items: center; background-color: #1e293b; padding: 4px; border-radius: 8px;">
+                    <span style="font-size: 14px; padding: 0 10px; color: #cbd5e1;">Letra:</span>
+                    <button onclick="alterarTamanhoFonte('normal')" id="botao-fonte-normal" class="botao-padrao" style="padding: 4px 12px; font-size: 14px; background-color: var(--marca-primaria);">A</button>
+                    <button onclick="alterarTamanhoFonte('grande')" id="botao-fonte-grande" class="botao-padrao" style="padding: 4px 12px; font-size: 16px; background-color: transparent; color: #cbd5e1; border: none;">A+</button>
+                    <button onclick="alterarTamanhoFonte('muito-grande')" id="botao-fonte-muito-grande" class="botao-padrao" style="padding: 4px 12px; font-size: 18px; background-color: transparent; color: #cbd5e1; border: none;">A++</button>
+                </div>
+
+                <button onclick="alternarContraste()" class="botao-padrao" style="padding: 8px 16px; font-size: 14px; background-color: #1e293b; display: flex; align-items: center; gap: 6px;">
+                    <span>🌗</span>
+                    <span>Preto e Branco</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- CABEÇALHO DO APLICATIVO -->
+    <header class="cabecalho-principal">
+        <div class="recipiente">
+            <span class="etiqueta-alerta">🔒 Internet sem Medo</span>
+            <h1 class="titulo-cabecalho">Guia Digital Seguro</h1>
+            <p style="font-size: 1.2rem; max-width: 700px; margin: 0 auto; opacity: 0.9;">
+                Aprenda a usar o telemóvel e a navegar pela internet com segurança. Siga as nossas dicas simples de proteção!
+            </p>
+        </div>
+    </header>
+
+    <!-- MENU DE ABAS GRANDES -->
+    <nav class="recipiente" aria-label="Abas de conteúdo">
+        <div class="menu-abas">
+            <button onclick="mudarAba('dicas')" id="aba-dicas" class="botao-aba aba-ativa">
+                <span>💡</span> Dicas Práticas
+            </button>
+            <button onclick="mudarAba('simulador')" id="aba-simulador" class="botao-aba">
+                <span>📱</span> Detetive de WhatsApp
+            </button>
+            <button onclick="mudarAba('quiz')" id="aba-quiz" class="botao-aba">
+                <span>🎮</span> Jogo da Segurança
+            </button>
+            <button onclick="mudarAba('emergencia')" id="aba-emergencia" class="botao-aba">
+                <span>🚨</span> O que fazer em Golpes?
+            </button>
+        </div>
+    </nav>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="recipiente">
+
+        <!-- SEÇÃO 1: DICAS PRÁTICAS -->
+        <section id="secao-dicas" class="conteudo-secao ativo">
+            <div class="texto-centro" style="margin-bottom: 30px;">
+                <h2 style="font-size: 2rem; font-weight: 800;">Manual Prático de Segurança</h2>
+                <p class="texto-secundario">Selecione uma das opções abaixo para ler as instruções explicadas em português simples:</p>
+            </div>
+
+            <div>
+                <div class="cartao-dica">
+                    <button onclick="alternarSanfona('sanfona-senhas')" class="botao-sanfona">
+                        <span style="display: flex; align-items: center; gap: 12px;">
+                            <span style="font-size: 32px;">🔑</span>
+                            <span>Como criar palavras-passe fáceis e seguras</span>
+                        </span>
+                        <span id="icone-sanfona-senhas">▼</span>
+                    </button>
+                    <div id="sanfona-senhas" class="conteudo-sanfona exibir">
+                        <div style="display: flex; flex-direction: column; gap: 15px; margin-bottom: 15px;">
+                            <div style="border: 2px solid var(--marca-sucesso); padding: 15px; border-radius: 12px; background: rgba(21, 128, 61, 0.05);">
+                                <h4 class="texto-sucesso margem-abaixo">✅ Faça isto:</h4>
+                                <p><strong>Técnica da Frase de Estimação:</strong> Escolha uma frase de que gosta e use a primeira letra de cada palavra. <br>Exemplo: <em>"A Minha Filha Amada Tem 2 Gatos!"</em> transforma-se em <strong class="texto-sucesso">AMFAT2G!</strong></p>
+                            </div>
+                            <div style="border: 2px solid var(--marca-perigo); padding: 15px; border-radius: 12px; background: rgba(185, 28, 28, 0.05);">
+                                <h4 class="texto-perigo margem-abaixo">❌ Evite isto:</h4>
+                                <p>Nunca utilize o seu nome completo, data de nascimento, contacto telefónico ou sequência simples de números (ex: 123456).</p>
+                            </div>
+                        </div>
+                        <div class="bloco-alerta">
+                            <p><strong>💡 Conselho Importante:</strong> Anotar as suas palavras-passe fisicamente num caderno em casa ainda é uma excelente maneira de evitar que os criminosos virtuais tenham acesso.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cartao-dica">
+                    <button onclick="alternarSanfona('sanfona-mensagem')" class="botao-sanfona">
+                        <span style="display: flex; align-items: center; gap: 12px;">
+                            <span style="font-size: 32px;">💬</span>
+                            <span>Golpes no WhatsApp (Falso Familiar)</span>
+                        </span>
+                        <span id="icone-sanfona-mensagem">▲</span>
+                    </button>
+                    <div id="sanfona-mensagem" class="conteudo-sanfona">
+                        <p class="margem-abaixo">Um criminoso cria uma conta nova de WhatsApp utilizando uma foto sua ou de um familiar (geralmente filhos ou netos), dizendo que precisou de trocar de número devido a um imprevisto.</p>
+                        <div style="background-color: var(--fundo-pagina); border: 2px solid var(--cor-borda); padding: 15px; border-radius: 12px;">
+                            <h4 class="fonte-negrito margem-abaixo">Como agir nesta situação:</h4>
+                            <p>1. Ligue imediatamente para o número anterior que já tinha guardado para confirmar o facto.</p>
+                            <p>2. Faça perguntas pessoais que apenas o seu verdadeiro familiar saberia, como o nome de um animal de estimação do passado.</p>
+                            <p>3. Nunca efetue transferências financeiras ou MB Way a pedido de números novos ou desconhecidos.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cartao-dica">
+                    <button onclick="alternarSanfona('sanfona-pix')" class="botao-sanfona">
+                        <span style="display: flex; align-items: center; gap: 12px;">
+                            <span style="font-size: 32px;">🏦</span>
+                            <span>Cuidados com o seu Banco e MB Way</span>
+                        </span>
+                        <span id="icone-sanfona-pix">▲</span>
+                    </button>
+                    <div id="sanfona-pix" class="conteudo-sanfona">
+                        <div class="bloco-alerta" style="border-left-color: var(--marca-perigo); background-color: rgba(185, 28, 28, 0.05); margin-top: 0;">
+                            <h4 class="texto-perigo margem-abaixo">Atenção Máxima:</h4>
+                            <p><strong>Nenhum banco liga por telefone a solicitar palavras-passe, pedir transferências de emergência ou devoluções.</strong> Se receber uma chamada a pedir isso, desligue imediatamente!</p>
+                        </div>
+                        <p class="margem-abaixo">Os bancos oficiais possuem canais fechados de apoio. Se houver alguma suspeita em relação à sua conta à ordem ou poupança, dirija-se pessoalmente ao seu balcão ou use a aplicação que já utilizava.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 2: SIMULADOR DETETIVE -->
+        <section id="secao-simulador" class="conteudo-secao">
+            <div class="texto-centro" style="margin-bottom: 30px;">
+                <h2 style="font-size: 2rem; font-weight: 800;">Detetive de WhatsApp</h2>
+                <p class="texto-secundario">Analise uma mensagem perigosa real. Toque nos <span class="texto-perigo">botões vermelhos</span> para descobrir os perigos ocultos:</p>
+            </div>
+
+            <div class="simulador-celular">
+                <div class="tela-celular">
+                    <div class="cabecalho-chat">
+                        <div class="avatar-chat">👤</div>
+                        <div>
+                            <div class="fonte-negrito" style="font-size: 16px;">Filho Novo Número</div>
+                            <span style="font-size: 12px; opacity: 0.8;">Ativo agora</span>
+                        </div>
+                    </div>
+
+                    <div class="area-mensagens">
+                        <div class="balao-mensagem">
+                            <p>
+                                Olá, tudo bem? O ecrã do meu telemóvel partiu-se e este é o meu novo contacto provisório. Guarda aí.
+                                <button onclick="revelarPista(1)" class="alerta-numero" aria-label="Pista número 1">1</button>
+                            </p>
+                        </div>
+                        <div class="balao-mensagem">
+                            <p>
+                                Preciso de efetuar o pagamento de uma conta urgente hoje no valor de 1.200,00 €.
+                                <button onclick="revelarPista(2)" class="alerta-numero" aria-label="Pista número 2">2</button>
+                            </p>
+                        </div>
+                        <div class="balao-mensagem">
+                            <p>
+                                Consegues pagar por mim? A minha aplicação do banco não ativa neste telemóvel. Amanhã de manhã devolvo-te!
+                                <button onclick="revelarPista(3)" class="alerta-numero" aria-label="Pista número 3">3</button>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="caixa-explicativa-pistas">
+                <p id="texto-explicacao-pista" class="fonte-negrito" style="font-size: 18px;">
+                    👉 Toque num dos números vermelhos (1, 2 ou 3) acima no telemóvel para desmascarar o golpe!
+                </p>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 3: QUIZ / JOGO DA SEGURANÇA -->
+        <section id="secao-quiz" class="conteudo-secao">
+            <div class="texto-centro" style="margin-bottom: 30px;">
+                <h2 style="font-size: 2rem; font-weight: 800;">Jogo: Seguro ou Perigo?</h2>
+                <p class="texto-secundario">Exercite a sua atenção respondendo às perguntas abaixo sobre situações reais:</p>
+            </div>
+
+            <div class="painel-quiz">
+                <div style="display: flex; justify-content: space-between; font-weight: bold; color: var(--cor-texto-secundario);">
+                    <span id="progresso-etapa">Situação 1 de 3</span>
+                    <span id="pontuacao-atual">Pontuação: 0</span>
+                </div>
+                <div class="barra-progresso-container">
+                    <div id="barra-indicadora" class="barra-progresso"></div>
+                </div>
+
+                <div id="bloco-interacao-pergunta">
+                    <div class="pergunta-bloco">
+                        <span id="quiz-emoticon" style="font-size: 60px; display: block; margin-bottom: 10px;">📲</span>
+                        <h3 id="texto-pergunta-quiz" style="font-size: 22px; font-weight: bold; line-height: 1.4;">
+                            Carregando pergunta...
+                        </h3>
+                    </div>
+
+                    <div class="grupo-botoes-opcao">
+                        <button onclick="avaliarEscolhaQuiz(true)" class="botao-resposta botao-resposta-seguro">
+                            🟢 É SEGURO
+                        </button>
+                        <button onclick="avaliarEscolhaQuiz(false)" class="botao-resposta botao-resposta-perigo">
+                            🔴 É PERIGO
+                        </button>
+                    </div>
+                </div>
+
+                <div id="painel-feedback" class="painel-resposta-feedback">
+                    <span id="feedback-emoticon" style="font-size: 80px; margin-bottom: 15px;">🎉</span>
+                    <h3 id="feedback-titulo" style="font-size: 28px; font-weight: 900; margin-bottom: 15px;">Excelente Escolha!</h3>
+                    <p id="feedback-mensagem" style="font-size: 18px; max-width: 500px; margin-bottom: 30px;" class="texto-secundario">
+                        Mensagem correta da explicação da questão.
+                    </p>
+                    <button onclick="carregarProximaQuestao()" class="botao-padrao" style="font-size: 20px; padding: 16px 32px;">
+                        Avançar para a próxima ➜
+                    </button>
+                </div>
+
+                <div id="painel-final" class="escondido" style="text-align: center; padding: 40px 0;">
+                    <span style="font-size: 100px; display: block; margin-bottom: 20px;">🏆</span>
+                    <h3 style="font-size: 32px; font-weight: 900; margin-bottom: 15px;">Treinamento Concluído!</h3>
+                    <p style="font-size: 20px; max-width: 500px; margin: 0 auto 30px auto;" class="texto-secundario">
+                        Parabéns! Concluiu a ronda de exercícios e está mais protegido contra as ameaças virtuais!
+                    </p>
+                    <div style="background-color: var(--fundo-pagina); border: 2px solid var(--cor-borda); padding: 20px; border-radius: 16px; display: inline-block; margin-bottom: 30px;">
+                        <span style="font-size: 18px; display: block;" class="texto-secundario">A Sua Pontuação Final:</span>
+                        <strong id="resultado-final-pontos" style="font-size: 28px; color: var(--marca-primaria);">3 de 3 acertos!</strong>
+                    </div>
+                    <div>
+                        <button onclick="reiniciarJogo()" class="botao-padrao" style="font-size: 18px;">
+                            Jogar Novamente 🔄
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 4: O QUE FAZER SE CAIR EM UM GOLPE -->
+        <section id="secao-emergencia" class="conteudo-secao">
+            <div class="texto-centro" style="margin-bottom: 40px;">
+                <span style="font-size: 60px; display: block; margin-bottom: 10px;">🚨</span>
+                <h2 style="font-size: 2rem; font-weight: 800;">O que fazer caso tenha caído num golpe?</h2>
+                <p class="texto-secundario">Não se sinta envergonhado ou com medo. Acontece a muitas pessoas. Siga este plano de ação imediato:</p>
+            </div>
+
+            <div class="grade-colunas">
+                <div class="cartao-dica" style="border-top: 6px solid var(--marca-perigo); padding: 24px;">
+                    <div style="background-color: rgba(185, 28, 28, 0.1); color: var(--marca-perigo); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 20px; margin-bottom: 15px;">1</div>
+                    <h3 style="font-size: 20px; font-weight: bold; margin-bottom: 10px;">Avisar o seu Banco</h3>
+                    <p class="texto-secundario" style="font-size: 16px; line-height: 1.5;">
+                        Entre em contacto imediatamente através do número oficial de emergência do cartão ou conta à ordem para bloquear os seus dados e interromper saques.
+                    </p>
+                </div>
+
+                <div class="cartao-dica" style="border-top: 6px solid var(--marca-destaque); padding: 24px;">
+                    <div style="background-color: rgba(245, 158, 11, 0.1); color: var(--marca-destaque); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 20px; margin-bottom: 15px;">2</div>
+                    <h3 style="font-size: 20px; font-weight: bold; margin-bottom: 10px;">Alertar Familiares</h3>
+                    <p class="texto-secundario" style="font-size: 16px; line-height: 1.5;">
+                        Caso tenham invadido a sua aplicação de mensagens, peça a um familiar que avise nos grupos conhecidos que está sem acesso, para impedir depósitos falsos.
+                    </p>
+                </div>
+
+                <div class="cartao-dica" style="border-top: 6px solid #1e40af; padding: 24px;">
+                    <div style="background-color: rgba(30, 64, 175, 0.1); color: #1e40af; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 20px; margin-bottom: 15px;">3</div>
+                    <h3 style="font-size: 20px; font-weight: bold; margin-bottom: 10px;">Apresentar Queixa-crime</h3>
+                    <p class="texto-secundario" style="font-size: 16px; line-height: 1.5;">
+                        Apresente uma Queixa-crime na polícia. Esta é essencial para provar as fraudes e pode ser feita de forma virtual na Queixa Eletrónica com a ajuda de conhecidos.
+                    </p>
+                </div>
+            </div>
+
+            <div style="background-color: var(--marca-escura); color: #ffffff; padding: 30px; border-radius: 24px; margin-top: 40px; display: flex; flex-direction: column; md-flex-direction: row; justify-content: space-between; align-items: center; gap: 20px; border: 2px solid var(--cor-borda);">
+                <div style="text-align: center;">
+                    <h3 style="font-size: 22px; font-weight: bold; margin-bottom: 8px;">Telefones Úteis Gratuitos</h3>
+                    <p style="opacity: 0.8; font-size: 16px;">Contacte os serviços de segurança em casos urgentes:</p>
+                </div>
+                <div style="display: flex; gap: 15px;">
+                    <a href="tel:112" class="botao-padrao" style="background-color: var(--marca-perigo); text-decoration: none; text-align: center; min-width: 130px; display: block; border: none;">
+                        <span style="font-size: 22px; display: block;">📞 112</span>
+                        <span style="font-size: 12px; font-weight: normal; opacity: 0.9;">Número Nacional de Emergência</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="recipiente" style="margin-top: 60px; text-align: center; padding-top: 30px; border-top: 2px solid var(--cor-borda);">
+        <p class="fonte-negrito" style="color: var(--cor-texto-principal); margin-bottom: 5px;">Guia Digital Seguro 🛡️</p>
+        <p class="texto-secundario" style="font-size: 15px;">Desenvolvido com dedicação para promover a inclusão digital segura dos nossos idosos.</p>
+        <p class="texto-secundario" style="font-size: 12px; margin-top: 20px;">© 2026 • Todos os direitos reservados</p>
+    </footer>
+
+    <!-- Ligação para o ficheiro JavaScript externo -->
+    <script src="script.js"></script>
+</body>
+</html>
