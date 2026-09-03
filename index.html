@@ -1,54 +1,196 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard Rec - Idosos</title>
-  <link rel="stylesheet" href="estilo.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Guia Digital Seguro: orientações simples para pessoas idosas navegarem na internet com mais segurança.">
+    <title>Guia Digital Seguro — Acessibilidade para pessoas idosas</title>
+    <link rel="stylesheet" href="estilo.css">
 </head>
-<body>
+<body id="corpo-aplicativo" class="fonte-normal">
+    <div class="barra-acessibilidade">
+        <div class="recipiente barra-acessibilidade__conteudo">
+            <div class="acessibilidade-titulo">
+                <span class="acessibilidade-titulo__icone" aria-hidden="true">♿</span>
+                <span class="fonte-negrito">Recursos de acessibilidade</span>
+            </div>
 
-  <header class="header">
-    <h1>Painel de Informações</h1>
-    <!-- Botão de alto contraste integrado no topo -->
-    <button id="btn-contrast" class="btn-contrast">🌓 Alto Contraste</button>
-  </header>
-
-  <main class="dashboard-grid">
-    <div class="card" data-title="Saúde e Exercícios" data-content="Praticar 30 minutos de caminhada leve diariamente melhora a circulação e fortalece as articulações.">
-      <span class="card-tag">Saúde</span>
-      <h2>Saúde e Exercícios</h2>
-      <p>Clique para ver detalhes e dicas diárias.</p>
+            <div class="grupo-botoes-acessibilidade" aria-label="Controles de acessibilidade">
+                <div class="controle-fonte" role="group" aria-label="Tamanho da letra">
+                    <span class="controle-fonte__rotulo">Letra:</span>
+                    <button type="button" onclick="alterarTamanhoFonte('normal')" id="botao-fonte-normal" class="botao-controle botao-controle--ativo" aria-label="Usar tamanho de letra normal">A</button>
+                    <button type="button" onclick="alterarTamanhoFonte('grande')" id="botao-fonte-grande" class="botao-controle" aria-label="Aumentar tamanho da letra">A+</button>
+                    <button type="button" onclick="alterarTamanhoFonte('muito-grande')" id="botao-fonte-muito-grande" class="botao-controle" aria-label="Usar tamanho de letra muito grande">A++</button>
+                </div>
+                <button type="button" onclick="alternarContraste()" class="botao-contraste">
+                    <span aria-hidden="true">◐</span>
+                    <span>Alto contraste</span>
+                </button>
+            </div>
+        </div>
     </div>
 
-    <div class="card" data-title="Lembrete de Medicamentos" data-content="Organize os remédios por horário do dia: manhã, tarde e noite. Sempre consulte a receita médica.">
-      <span class="card-tag">Lembrete</span>
-      <h2>Lembrete de Medicamentos</h2>
-      <p>Veja como organizar sua rotina médica.</p>
+    <header class="cabecalho-principal">
+        <div class="recipiente cabecalho-principal__conteudo">
+            <div class="cabecalho-principal__topo">
+                <span class="etiqueta-alerta"><span aria-hidden="true">🔒</span> Internet sem medo</span>
+                <span class="cabecalho-status"><span class="status-ponto" aria-hidden="true"></span> Guia aberto para você</span>
+            </div>
+            <h1 class="titulo-cabecalho">Guia Digital Seguro</h1>
+            <p class="subtitulo-cabecalho">Orientações simples para usar o telemóvel, conversar com segurança e reconhecer tentativas de golpe.</p>
+
+            <div class="resumo-dashboard" aria-label="Resumo do guia">
+                <div class="resumo-item">
+                    <span class="resumo-item__icone" aria-hidden="true">🛡️</span>
+                    <div><strong>6</strong><span>orientações essenciais</span></div>
+                </div>
+                <div class="resumo-item">
+                    <span class="resumo-item__icone" aria-hidden="true">🔊</span>
+                    <div><strong>Leitura</strong><span>em voz alta nos cards</span></div>
+                </div>
+                <div class="resumo-item">
+                    <span class="resumo-item__icone" aria-hidden="true">✓</span>
+                    <div><strong>Passo a passo</strong><span>em linguagem simples</span></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="recipiente navegacao-principal" aria-label="Seções do guia">
+        <div class="menu-abas">
+            <button type="button" onclick="mudarAba('dicas')" id="aba-dicas" class="botao-aba aba-ativa">
+                <span aria-hidden="true">💡</span> Dicas práticas
+            </button>
+            <button type="button" onclick="mudarAba('simulador')" id="aba-simulador" class="botao-aba">
+                <span aria-hidden="true">📱</span> Detetive de WhatsApp
+            </button>
+            <button type="button" onclick="mudarAba('quiz')" id="aba-quiz" class="botao-aba">
+                <span aria-hidden="true">🎮</span> Jogo da segurança
+            </button>
+            <button type="button" onclick="mudarAba('emergencia')" id="aba-emergencia" class="botao-aba">
+                <span aria-hidden="true">🚨</span> Se cair em um golpe
+            </button>
+        </div>
+    </nav>
+
+    <main class="recipiente conteudo-principal">
+        <section id="secao-dicas" class="conteudo-secao ativo" aria-labelledby="titulo-dicas">
+            <div class="cabecalho-secao">
+                <div>
+                    <span class="sobretitulo">Centro de orientação</span>
+                    <h2 id="titulo-dicas">O que você quer consultar hoje?</h2>
+                    <p class="texto-secundario">Escolha um card para abrir a explicação completa. Dentro do modal, você também pode ouvir o conteúdo.</p>
+                </div>
+                <div class="legenda-card"><span class="legenda-card__ponto" aria-hidden="true"></span> Clique ou use Enter para abrir</div>
+            </div>
+
+            <div class="dashboard-grid" aria-label="Cards de orientação">
+                <button type="button" class="card-dica card-dica--azul" onclick="abrirModalDica('senhas')" aria-haspopup="dialog">
+                    <span class="card-dica__topo"><span class="card-dica__icone" aria-hidden="true">🔑</span><span class="card-dica__etiqueta">Proteção de contas</span></span>
+                    <span class="card-dica__titulo">Palavras-passe fortes</span>
+                    <span class="card-dica__resumo">Crie combinações fáceis de lembrar e difíceis de adivinhar.</span>
+                    <span class="card-dica__rodape">Abrir orientação <span aria-hidden="true">→</span></span>
+                </button>
+
+                <button type="button" class="card-dica card-dica--verde" onclick="abrirModalDica('falso-familiar')" aria-haspopup="dialog">
+                    <span class="card-dica__topo"><span class="card-dica__icone" aria-hidden="true">💬</span><span class="card-dica__etiqueta">WhatsApp</span></span>
+                    <span class="card-dica__titulo">Golpe do falso familiar</span>
+                    <span class="card-dica__resumo">Saiba confirmar se a mensagem veio mesmo de alguém conhecido.</span>
+                    <span class="card-dica__rodape">Abrir orientação <span aria-hidden="true">→</span></span>
+                </button>
+
+                <button type="button" class="card-dica card-dica--amarelo" onclick="abrirModalDica('banco')" aria-haspopup="dialog">
+                    <span class="card-dica__topo"><span class="card-dica__icone" aria-hidden="true">🏦</span><span class="card-dica__etiqueta">Banco e pagamentos</span></span>
+                    <span class="card-dica__titulo">Cuidados com o banco</span>
+                    <span class="card-dica__resumo">Proteja sua conta e desconfie de pedidos urgentes por telefone.</span>
+                    <span class="card-dica__rodape">Abrir orientação <span aria-hidden="true">→</span></span>
+                </button>
+
+                <button type="button" class="card-dica card-dica--vermelho" onclick="abrirModalDica('avisar-banco')" aria-haspopup="dialog">
+                    <span class="card-dica__topo"><span class="card-dica__numero">1</span><span class="card-dica__etiqueta">Se algo acontecer</span></span>
+                    <span class="card-dica__titulo">Avise seu banco</span>
+                    <span class="card-dica__resumo">O primeiro passo é bloquear cartões, acessos e movimentações suspeitas.</span>
+                    <span class="card-dica__rodape">Ver passo a passo <span aria-hidden="true">→</span></span>
+                </button>
+
+                <button type="button" class="card-dica card-dica--laranja" onclick="abrirModalDica('familiares')" aria-haspopup="dialog">
+                    <span class="card-dica__topo"><span class="card-dica__numero">2</span><span class="card-dica__etiqueta">Se algo acontecer</span></span>
+                    <span class="card-dica__titulo">Avise seus familiares</span>
+                    <span class="card-dica__resumo">Evite que outras pessoas recebam pedidos falsos em seu nome.</span>
+                    <span class="card-dica__rodape">Ver passo a passo <span aria-hidden="true">→</span></span>
+                </button>
+
+                <button type="button" class="card-dica card-dica--roxo" onclick="abrirModalDica('queixa')" aria-haspopup="dialog">
+                    <span class="card-dica__topo"><span class="card-dica__numero">3</span><span class="card-dica__etiqueta">Se algo acontecer</span></span>
+                    <span class="card-dica__titulo">Registre a ocorrência</span>
+                    <span class="card-dica__resumo">A denúncia ajuda a documentar a fraude e a proteger outras pessoas.</span>
+                    <span class="card-dica__rodape">Ver passo a passo <span aria-hidden="true">→</span></span>
+                </button>
+            </div>
+
+            <div class="faixa-apoio">
+                <div class="faixa-apoio__icone" aria-hidden="true">💡</div>
+                <div><strong>Uma regra para guardar:</strong><p>Nunca tenha pressa para clicar, fornecer um código ou transferir dinheiro. Pare, respire e confirme por outro canal.</p></div>
+            </div>
+        </section>
+
+        <section id="secao-simulador" class="conteudo-secao" aria-labelledby="titulo-simulador">
+            <div class="cabecalho-secao cabecalho-secao--compacto">
+                <div><span class="sobretitulo">Aprenda praticando</span><h2 id="titulo-simulador">Detetive de WhatsApp</h2><p class="texto-secundario">Toque nos números vermelhos para descobrir os sinais de perigo escondidos na mensagem.</p></div>
+            </div>
+
+            <div class="simulador-layout">
+                <div class="simulador-celular">
+                    <div class="tela-celular">
+                        <div class="cabecalho-chat"><div class="avatar-chat" aria-hidden="true">👤</div><div><div class="fonte-negrito">Filho — número novo</div><span class="chat-status">Ativo agora</span></div></div>
+                        <div class="area-mensagens">
+                            <div class="balao-mensagem"><p>Olá, tudo bem? O ecrã do meu telemóvel partiu-se e este é o meu novo contacto provisório. Guarda aí. <button type="button" onclick="revelarPista(1)" class="alerta-numero" aria-label="Ver pista número 1">1</button></p><span class="hora-mensagem">10:41 ✓✓</span></div>
+                            <div class="balao-mensagem"><p>Preciso de efetuar o pagamento de uma conta urgente hoje no valor de 1.200,00 €. <button type="button" onclick="revelarPista(2)" class="alerta-numero" aria-label="Ver pista número 2">2</button></p><span class="hora-mensagem">10:42 ✓✓</span></div>
+                            <div class="balao-mensagem"><p>Consegues pagar por mim? A minha aplicação do banco não ativa neste telemóvel. Amanhã de manhã devolvo-te! <button type="button" onclick="revelarPista(3)" class="alerta-numero" aria-label="Ver pista número 3">3</button></p><span class="hora-mensagem">10:42 ✓✓</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="painel-pistas"><span class="painel-pistas__etiqueta">ANALISADOR DE MENSAGENS</span><h3>Você percebeu algo suspeito?</h3><p id="texto-explicacao-pista">Toque em um dos números vermelhos no telemóvel ao lado para desmascarar o golpe.</p><div class="painel-pistas__dica"><span aria-hidden="true">🔎</span><span>Procure por urgência, número desconhecido e pedido de dinheiro.</span></div></div>
+            </div>
+        </section>
+
+        <section id="secao-quiz" class="conteudo-secao" aria-labelledby="titulo-quiz">
+            <div class="cabecalho-secao cabecalho-secao--compacto"><div><span class="sobretitulo">Teste seus conhecimentos</span><h2 id="titulo-quiz">Jogo: Seguro ou perigo?</h2><p class="texto-secundario">Responda às situações reais e veja como está sua atenção.</p></div></div>
+            <div class="painel-quiz">
+                <div class="quiz-topo"><span id="progresso-etapa">Situação 1 de 3</span><span id="pontuacao-atual">Pontuação: 0</span></div>
+                <div class="barra-progresso-container"><div id="barra-indicadora" class="barra-progresso"></div></div>
+                <div id="bloco-interacao-pergunta">
+                    <div class="pergunta-bloco"><span id="quiz-emoticon" class="quiz-emoticon" aria-hidden="true">📲</span><h3 id="texto-pergunta-quiz">Carregando pergunta...</h3></div>
+                    <div class="grupo-botoes-opcao"><button type="button" onclick="avaliarEscolhaQuiz(true)" class="botao-resposta botao-resposta-seguro">🟢 É seguro</button><button type="button" onclick="avaliarEscolhaQuiz(false)" class="botao-resposta botao-resposta-perigo">🔴 É perigo</button></div>
+                </div>
+                <div id="painel-feedback" class="painel-resposta-feedback"><span id="feedback-emoticon" class="feedback-emoticon" aria-hidden="true">🎉</span><h3 id="feedback-titulo">Excelente escolha!</h3><p id="feedback-mensagem" class="texto-secundario">Mensagem correta da explicação da questão.</p><button type="button" onclick="carregarProximaQuestao()" class="botao-padrao">Avançar para a próxima <span aria-hidden="true">→</span></button></div>
+                <div id="painel-final" class="escondido painel-final"><span class="painel-final__trofeu" aria-hidden="true">🏆</span><h3>Treinamento concluído!</h3><p class="texto-secundario">Parabéns! Você concluiu os exercícios e está mais protegido contra ameaças virtuais.</p><div class="resultado-final"><span> sua pontuação final</span><strong id="resultado-final-pontos">3 de 3 acertos!</strong></div><button type="button" onclick="reiniciarJogo()" class="botao-padrao">Jogar novamente <span aria-hidden="true">↻</span></button></div>
+            </div>
+        </section>
+
+        <section id="secao-emergencia" class="conteudo-secao" aria-labelledby="titulo-emergencia">
+            <div class="cabecalho-secao cabecalho-secao--compacto"><div><span class="sobretitulo sobretitulo--perigo">Plano de ação</span><h2 id="titulo-emergencia">Caiu em um golpe? Não se culpe.</h2><p class="texto-secundario">Aja com calma e siga os três passos abaixo. Clique em cada card para saber o que fazer.</p></div><div class="emergencia-selo" aria-hidden="true">🚨</div></div>
+            <div class="dashboard-grid dashboard-grid--emergencia">
+                <button type="button" class="card-dica card-dica--vermelho" onclick="abrirModalDica('avisar-banco')" aria-haspopup="dialog"><span class="card-dica__topo"><span class="card-dica__numero">1</span><span class="card-dica__etiqueta">Primeiro passo</span></span><span class="card-dica__titulo">Avise seu banco</span><span class="card-dica__resumo">Entre em contato pelo número oficial para bloquear seus dados e cartões.</span><span class="card-dica__rodape">Abrir passo a passo <span aria-hidden="true">→</span></span></button>
+                <button type="button" class="card-dica card-dica--laranja" onclick="abrirModalDica('familiares')" aria-haspopup="dialog"><span class="card-dica__topo"><span class="card-dica__numero">2</span><span class="card-dica__etiqueta">Segundo passo</span></span><span class="card-dica__titulo">Avise familiares</span><span class="card-dica__resumo">Peça ajuda para avisar seus contatos e evitar novos pedidos falsos.</span><span class="card-dica__rodape">Abrir passo a passo <span aria-hidden="true">→</span></span></button>
+                <button type="button" class="card-dica card-dica--roxo" onclick="abrirModalDica('queixa')" aria-haspopup="dialog"><span class="card-dica__topo"><span class="card-dica__numero">3</span><span class="card-dica__etiqueta">Terceiro passo</span></span><span class="card-dica__titulo">Registre a ocorrência</span><span class="card-dica__resumo">Faça a denúncia e guarde comprovantes, mensagens e números envolvidos.</span><span class="card-dica__rodape">Abrir passo a passo <span aria-hidden="true">→</span></span></button>
+            </div>
+            <div class="contatos-urgencia"><div><span class="contatos-urgencia__etiqueta">EM CASO DE RISCO IMEDIATO</span><h3>Telefones úteis</h3><p>Em uma emergência, ligue para o número oficial da sua região.</p></div><a href="tel:112" class="botao-telefone"><span aria-hidden="true">📞</span><span><strong>112</strong><small>Emergência</small></span></a></div>
+        </section>
+    </main>
+
+    <footer class="rodape recipiente"><div><strong>Guia Digital Seguro</strong><span>Inclusão digital com mais tranquilidade.</span></div><span>© 2026</span></footer>
+
+    <div id="modal-dica" class="modal-container" role="dialog" aria-modal="true" aria-labelledby="modal-titulo" aria-describedby="modal-texto" aria-hidden="true">
+        <div class="modal-conteudo" role="document">
+            <button type="button" class="fechar-modal" onclick="fecharModal()" aria-label="Fechar orientação">×</button>
+            <span id="modal-etiqueta" class="modal-etiqueta">Orientação</span>
+            <h2 id="modal-titulo">Título da orientação</h2>
+            <div id="modal-texto" class="modal-texto">Conteúdo da orientação.</div>
+            <div class="modal-acoes"><button type="button" id="btn-ler-texto" class="botao-leitura" onclick="alternarLeituraVoz()"><span aria-hidden="true">🔊</span> Ler em voz alta</button><button type="button" class="botao-modal-secundario" onclick="fecharModal()">Fechar</button></div>
+        </div>
     </div>
 
-    <div class="card" data-title="Alimentação Saudável" data-content="Consuma frutas, vegetais e mantenha-se hidratado bebendo pelo menos 2 litros de água ao longo do dia.">
-      <span class="card-tag">Nutrição</span>
-      <h2>Alimentação Saudável</h2>
-      <p>Orientações para uma boa nutrição na terceira idade.</p>
-    </div>
-  </main>
-
-  <!-- Modal -->
-  <div id="modal" class="modal-overlay hidden" aria-hidden="true">
-    <div class="modal-card">
-      <button class="close-btn" id="close-modal">&times;</button>
-      <h2 id="modal-title">Título do Modal</h2>
-      <p id="modal-body">Conteúdo detalhado aqui...</p>
-      
-      <div class="modal-actions">
-        <button id="read-btn" class="btn-read">
-          🔊 Ouvir Conteúdo
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
