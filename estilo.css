@@ -1,3 +1,6 @@
+/* =========================================
+   ESTILOS GERAIS (MODO CLARO PADRÃO)
+   ========================================= */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -9,6 +12,7 @@ body {
   background-color: #f4f6f9;
   color: #333;
   padding: 20px;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .header {
@@ -16,6 +20,25 @@ body {
   margin-bottom: 30px;
 }
 
+/* Estilo do Botão de Alto Contraste */
+.btn-contrast {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 15px;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-contrast:hover {
+  background-color: #000;
+}
+
+/* Layout dos Cards */
 .dashboard-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -24,7 +47,6 @@ body {
   margin: 0 auto;
 }
 
-/* Estilo dos Cards */
 .card {
   background: #ffffff;
   border-radius: 12px;
@@ -62,7 +84,7 @@ body {
   font-size: 0.95rem;
 }
 
-/* Estilo do Modal */
+/* Estilos do Modal */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -120,7 +142,7 @@ body {
   margin-bottom: 24px;
 }
 
-/* Botão de Leitura */
+/* Botão de Leitura (Text-to-Speech) */
 .btn-read {
   background-color: #28a745;
   color: white;
@@ -139,8 +161,60 @@ body {
 .btn-read:hover {
   background-color: #218838;
 }
-<header class="header">
-    <h1>Painel de Informações</h1>
-    <!-- Novo botão de alto contraste -->
-    <button id="btn-contrast" class="btn-contrast">🌓 Alto Contraste</button>
-  </header>
+
+/* =========================================
+   MODO DE ALTO CONTRASTE
+   ========================================= */
+body.alto-contraste {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+body.alto-contraste .header h1 {
+  color: #ffff00; 
+}
+
+body.alto-contraste .btn-contrast {
+  background-color: #ffff00;
+  color: #000000;
+}
+
+body.alto-contraste .card {
+  background: #111111;
+  border: 2px solid #ffff00;
+  box-shadow: none;
+}
+
+body.alto-contraste .card:hover {
+  border-color: #ffffff;
+}
+
+body.alto-contraste .card h2,
+body.alto-contraste #modal-title {
+  color: #ffff00;
+}
+
+body.alto-contraste .card p,
+body.alto-contraste #modal-body {
+  color: #ffffff;
+}
+
+body.alto-contraste .card-tag {
+  background-color: #ffff00;
+  color: #000000;
+}
+
+body.alto-contraste .modal-card {
+  background: #000000;
+  border: 3px solid #ffff00;
+}
+
+body.alto-contraste .close-btn {
+  color: #ffff00;
+}
+
+body.alto-contraste .btn-read {
+  background-color: #ffff00;
+  color: #000000;
+  border: 2px solid #ffffff;
+}
