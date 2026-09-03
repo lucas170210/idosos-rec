@@ -5,6 +5,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const modalBody = document.getElementById('modal-body');
   const closeModalBtn = document.getElementById('close-modal');
   const readBtn = document.getElementById('read-btn');
+  const btnContrast = document.getElementById('btn-contrast');
+
+  // Lógica do Alto Contraste
+  btnContrast.addEventListener('click', () => {
+    document.body.classList.toggle('alto-contraste');
+  });
 
   // Abre o modal e carrega os dados do card clicado
   cards.forEach(card => {
@@ -29,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   closeModalBtn.addEventListener('click', closeModal);
 
-  // Fecha o modal se clicar fora do conteúdo
+  // Fecha o modal se clicar fora do conteúdo da caixa
   modal.addEventListener('click', (e) => {
     if (e.target === modal) {
       closeModal();
@@ -38,13 +44,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Botão de Leitura (Text-to-Speech)
   readBtn.addEventListener('click', () => {
-    window.speechSynthesis.cancel(); // Para leituras anteriores
+    window.speechSynthesis.cancel(); // Para leituras anteriores, se houver
 
     const textToRead = `${modalTitle.textContent}. ${modalBody.textContent}`;
     const utterance = new SpeechSynthesisUtterance(textToRead);
 
     utterance.lang = 'pt-BR';
-    utterance.rate = 0.9; // Velocidade ligeiramente pausada para facilitar a compreensão
+    utterance.rate = 0.9; // Velocidade ligeiramente pausada para facilitar a compreensão do idoso
 
     window.speechSynthesis.speak(utterance);
   });
