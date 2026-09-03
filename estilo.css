@@ -139,3 +139,8 @@ body {
 .btn-read:hover {
   background-color: #218838;
 }
+<header class="header">
+    <h1>Painel de Informações</h1>
+    <!-- Novo botão de alto contraste -->
+    <button id="btn-contrast" class="btn-contrast">🌓 Alto Contraste</button>
+  </header>
