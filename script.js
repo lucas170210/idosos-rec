@@ -174,3 +174,56 @@ function reiniciarJogo() {
 window.onload = function() {
     atualizarPainelQuiz();
 }
+let leitorSintese = window.speechSynthesis;
+let uttranceLeitura = null;
+
+function abrirModalDica(titulo, texto) {
+  document.getElementById('modal-titulo').textContent = titulo;
+  document.getElementById('modal-texto').textContent = texto;
+  document.getElementById('modal-dica').classList.add('ativo');
+}
+
+function fecharModal() {
+  document.getElementById('modal-dica').classList.remove('ativo');
+  pararLeituraVoz();
+}
+
+function alternarLeituraVoz() {
+  if (leitorSintese.speaking) {
+    pararLeituraVoz();
+    return;
+  }
+
+  const textoParaLer = `${document.getElementById('modal-titulo').textContent}. ${document.getElementById('modal-texto').textContent}`;
+  
+  uttranceLeitura = new SpeechSynthesisUtterance(textoParaLer);
+  uttranceLeitura.lang = 'pt-PT'; // Ou 'pt-BR' conforme a região do projeto
+  uttranceLeitura.rate = 0.9; // Velocidade levemente reduzida para idosos
+
+  const btnLer = document.getElementById('btn-ler-texto');
+  btnLer.textContent = '⏹️ Parar Leitura';
+
+  uttranceLeitura.onend = () => {
+    btnLer.textContent = '🔊 Ler em voz alta';
+  };
+
+  leitorSintese.speak(uttranceLeitura);
+}
+
+function pararLeituraVoz() {
+  if (leitorSintese.speaking) {
+    leitorSintese.cancel();
+  }
+  const btnLer = document.getElementById('btn-ler-texto');
+  if (btnLer) {
+    btnLer.textContent = '🔊 Ler em voz alta';
+  }
+}
+
+// Fechar modal ao clicar fora da caixa de conteúdo
+window.onclick = function(event) {
+  const modal = document.getElementById('modal-dica');
+  if (event.target === modal) {
+    fecharModal();
+  }
+};

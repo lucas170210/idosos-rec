@@ -307,3 +307,30 @@
     <script src="script.js"></script>
 </body>
 </html>
+<!-- Seção de Cards -->
+<section class="grid-cards">
+  <div class="card-dica" onclick="abrirModalDica('Dica de Segurança', 'Nunca forneça suas senhas ou dados bancários por telefone ou mensagens.')">
+    <div class="card-icone">🔒</div>
+    <h3>Proteja suas Senhas</h3>
+    <p>Clique para ler mais sobre proteção de dados.</p>
+  </div>
+  
+  <div class="card-dica" onclick="abrirModalDica('Golpe do WhatsApp', 'Caso receba mensagem de um parente pedindo dinheiro urgente em número novo, ligue para o número antigo antes de transferir.')">
+    <div class="card-icone">📲</div>
+    <h3>Golpe do Falso Parente</h3>
+    <p>Clique para conferir as orientações de verificação.</p>
+  </div>
+</section>
+
+<!-- Modal com Leitor de Voz -->
+<div id="modal-dica" class="modal-container">
+  <div class="modal-conteudo">
+    <button class="fechar-modal" onclick="fecharModal()">&times;</button>
+    <h2 id="modal-titulo">Título da Dica</h2>
+    <div id="modal-texto">Conteúdo da dica aqui...</div>
+    
+    <div class="modal-acoes">
+      <button id="btn-ler-texto" onclick="alternarLeituraVoz()">🔊 Ler em voz alta</button>
+    </div>
+  </div>
+</div>
